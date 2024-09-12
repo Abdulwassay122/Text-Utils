@@ -53,9 +53,8 @@ export default function TextForm(props) {
             props.showAlert("Enter text below!", "warning")
         }
         else
-       {let text = document.getElementById("my-box")
-       text.select()
-       navigator.clipboard.writeText(text.value)
+       {
+       navigator.clipboard.writeText(Text)
        props.showAlert("Copied to Clipboard!", "success")}
 
     }
@@ -74,7 +73,7 @@ export default function TextForm(props) {
         setText(event.target.value)
     }
 
-    let trimed = Text.replace(/\s+/g, " ").trim();
+    // let trimed = Text.replace(/\s+/g, " ").trim();
   return (
     <>
     <div className="container" style={{color : props.mode=== "dark"? "white":"black"}}>
@@ -83,21 +82,21 @@ export default function TextForm(props) {
    <div className="mb-3">
     <textarea className="form-control " value={Text} style={{backgroundColor : props.mode=== "dark"? "#707070":"white", color : props.mode=== "dark"? "white":"black"}} onChange={handleOnChange} id="my-box" rows="8"></textarea>
    </div>
-   <button className="btn btn-primary my-2" onClick={handleUpClick} >Convert to UpperCase</button>
-   <button className="btn btn-primary  mx-2" onClick={handleLoClick} >Convert to UpperCase</button>
-   <button className="btn btn-primary  my-2" onClick={handleSenClick} >Convert to SentenceCase</button>
-   <button className="btn btn-primary  mx-2" onClick={handleClearClick} >Clear text</button>
-   <button className="btn btn-primary  my-2 mx-2" onClick={handleCopy} >Copy text</button>
-   <button className="btn btn-primary  mx-2" onClick={handleExtraSpaces} >Remove extra spaces</button>
+   <button disabled={Text.length===0} className="btn btn-primary my-2" onClick={handleUpClick} >Convert to UpperCase</button>
+   <button disabled={Text.length===0} className="btn btn-primary  mx-2" onClick={handleLoClick} >Convert to UpperCase</button>
+   <button disabled={Text.length===0} className="btn btn-primary  my-2" onClick={handleSenClick} >Convert to SentenceCase</button>
+   <button disabled={Text.length===0} className="btn btn-primary  mx-2" onClick={handleClearClick} >Clear text</button>
+   <button disabled={Text.length===0} className="btn btn-primary  my-2 mx-2" onClick={handleCopy} >Copy text</button>
+   <button disabled={Text.length===0} className="btn btn-primary  mx-2" onClick={handleExtraSpaces} >Remove extra spaces</button>
     </div>
     </div>
 
     <div className="container my-3"  style={{color : props.mode=== "dark"? "white":"black"}} >
         <h3>Your text Summary</h3>
-        <p>{trimed.split(" ").length} Words and {trimed.length} Character</p>
-        <p>Average reading time {0.008 *( trimed.split(" ").length) } Minutes</p>
+        <p>{Text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Words and {Text.split("").filter((element)=>{return element!==" "}).length} Character</p>
+        <p>Average reading time {0.008 * Text.split(" ").filter((element)=>{return element.length!==0}).length } Minutes</p>
         <h3>Preview</h3>
-        <p>{Text.length>0 ? Text: "Enter text above to preview"}</p>
+        <p>{Text.length>0 ? Text: "Nothing to preview!"}</p>
     </div>
 
 

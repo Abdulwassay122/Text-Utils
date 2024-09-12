@@ -1,17 +1,17 @@
 // import logo from './logo.svg';
 import { useState } from "react";
 import "./App.css";
-// import About from './Components/About';
+import About from './Components/About';
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
 import React from "react";
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
+import {
+  BrowserRouter,
+  Routes,
+  Route,
   
-// } from "react-router-dom";
+} from "react-router-dom";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -37,56 +37,55 @@ function App() {
     }
   };
 
-  const light =()=>{
-    setMode("light");
-      document.body.style.backgroundColor = "white"
-      showAlert("Light theme enabled!", "success")
-  }
-  const green =()=>{
-    setMode("dark");
-      document.body.style.backgroundColor = "#0f2414"
-      showAlert("Green theme enabled!", "success")
-      document.title = "TextUtils - Green Theme"
+  // const light =()=>{
+  //   setMode("light");
+  //     document.body.style.backgroundColor = "white"
+  //     showAlert("Light theme enabled!", "success")
+  // }
+  // const green =()=>{
+  //   setMode("dark");
+  //     document.body.style.backgroundColor = "#0f2414"
+  //     showAlert("Green theme enabled!", "success")
+  //     // document.title = "TextUtils - Green Theme"
 
-  }
-  const blue =()=>{
-    setMode("dark");
-      document.body.style.backgroundColor = "rgb(23 42 70)"
-      showAlert("Blue theme enabled!", "success")
-      document.title = "TextUtils - Blue Theme"
+  // }
+  // const blue =()=>{
+  //   setMode("dark");
+  //     document.body.style.backgroundColor = "rgb(23 42 70)"
+  //     showAlert("Blue theme enabled!", "success")
+  //     // document.title = "TextUtils - Blue Theme"
 
-  }
-  const red =()=>{
-    setMode("dark");
-      document.body.style.backgroundColor = "#201212"
-      showAlert("Red theme enabled!", "success")
-      document.title = "TextUtils - Red Theme"
-  }
+  // }
+  // const red =()=>{
+  //   setMode("dark");
+  //     document.body.style.backgroundColor = "#201212"
+  //     showAlert("Red theme enabled!", "success")
+  //     // document.title = "TextUtils - Red Theme"
+  // }
   
 
 
   
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
       <Navbar
         title="TextUtils"
         abouttext="About Us"
         mode={mode}
         togglemode={togglemode}
-        green = {green}
-        blue = {blue}
-        red = {red}
-        light = {light}
+        // green = {green}
+        // blue = {blue}
+        // red = {red}
+        // light = {light}
       />
       <Alert alert = {alert} />
-      {/* <Routes>
-          <Route path="/about" element= {<About />}/>
+      <Routes>
+          {/* <Route path="/about" element= {<About  mode = {mode} />}/> */}
           <Route path="/" element= {<TextForm heading="Enter text to analyze" mode = {mode} showAlert = {showAlert} /> }/>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
       {/* <About /> */}
-      <TextForm heading="Enter text to analyze" mode = {mode} showAlert = {showAlert} />
     </>
   );
 }
