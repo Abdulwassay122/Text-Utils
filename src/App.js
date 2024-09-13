@@ -68,7 +68,7 @@ function App() {
   
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
       <Navbar
         title="TextUtils"
         abouttext="About Us"
@@ -80,12 +80,11 @@ function App() {
         // light = {light}
       />
       <Alert alert = {alert} />
-      <TextForm heading="Enter text to analyze" mode = {mode} showAlert = {showAlert} />
-      {/* <Routes>
+      <Routes>
           <Route path="/about" element= {<About  mode = {mode} />}/>
           <Route path="/" element= {<TextForm heading="Enter text to analyze" mode = {mode} showAlert = {showAlert} /> }/>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
       {/* <About /> */}
     </>
   );
